@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - CustomerDB@localhost" uuid="7116f73a-86e2-4958-a5d9-1cffe35edb30">
+    <database-info product="MySQL" version="5.6.16" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.29 ( Revision: alexander.soklakov@oracle.com-20140120140810-s44574olh90i6i4l )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="CustomerDB"/>
+    <table name="Courses" schema="" catalog="CustomerDB" type="TABLE">
+      <column name="code" sqlType="VARCHAR" precision="8" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" precision="640" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="code"/>
+      <exported-key name="taughtcourses_ibfk_2" table="TaughtCourses" schema="" catalog="CustomerDB" columns="course"/>
+    </table>
+    <table name="TaughtCourses" schema="" catalog="CustomerDB" type="TABLE">
+      <column name="tcid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="course" sqlType="VARCHAR" precision="8" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tid" sqlType="VARCHAR" precision="8" scale="0" nullable="true" jdbcType="12"/>
+      <column name="classid" sqlType="VARCHAR" precision="2" scale="0" nullable="true" jdbcType="12"/>
+      <column name="semester" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="numberOfStudents" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="tcid"/>
+      <foreign-key name="taughtcourses_ibfk_1" columns="tid" ref-table="Teachers" ref-schema="" ref-catalog="CustomerDB" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="taughtcourses_ibfk_2" columns="course" ref-table="Courses" ref-schema="" ref-catalog="CustomerDB" ref-columns="code" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="Teachers" schema="" catalog="CustomerDB" type="TABLE">
+      <column name="id" sqlType="VARCHAR" precision="8" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="title" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="taughtcourses_ibfk_1" table="TaughtCourses" schema="" catalog="CustomerDB" columns="tid"/>
+    </table>
+  </data-source>
+</component>
