@@ -43,7 +43,7 @@ public class CoursesDAO {
 
     public List<CourseList> listCourse() {
         DBUtil util = new DBUtil();
-        ArrayList<CourseList> result = new ArrayList<>();
+        ArrayList<CourseList> result = new ArrayList<CourseList>();
 
         Connection con = util.getCon();
         String sql = "SELECT TC.course, TC.classid, C.name, T.name, TC.semester, TC.numberOfStudents FROM TaughtCourses AS TC, Courses C , Teachers AS T WHERE TC.course = C.code AND  TC.tid=T.id ORDER BY TC.semester DESC";
@@ -77,7 +77,7 @@ public class CoursesDAO {
         String sql = "SELECT TC.course, TC.classid, C.name, T.name, TC.semester, TC.numberOfStudents FROM TaughtCourses AS TC, Courses C , Teachers AS T WHERE TC.course = C.code AND TC.tid=T.id AND (C.name LIKE ? OR T.name = ?) ORDER BY TC.semester DESC";
         DBUtil util = new DBUtil();
         Connection con = util.getCon();
-        ArrayList<CourseList> result = new ArrayList<>();
+        ArrayList<CourseList> result = new ArrayList<CourseList>();
 
         try {
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -111,7 +111,7 @@ public class CoursesDAO {
         String sql = "SELECT TC.course, TC.classid, C.name, T.name, TC.semester, TC.numberOfStudents FROM TaughtCourses AS TC, Courses C , Teachers AS T WHERE TC.course = C.code AND TC.tid=T.id AND (C.name LIKE ? AND T.name = ?) ORDER BY TC.semester DESC";
         DBUtil util = new DBUtil();
         Connection con = util.getCon();
-        ArrayList<CourseList> result = new ArrayList<>();
+        ArrayList<CourseList> result = new ArrayList<CourseList>();
 
         try {
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -143,7 +143,7 @@ public class CoursesDAO {
 
     public ArrayList<Courses> getCourseById(String code){
         DBUtil util = new DBUtil();
-        ArrayList<Courses> courses = new ArrayList<>();
+        ArrayList<Courses> courses = new ArrayList<Courses>();
 
         Connection con = util.getCon();
         String sql = "SELECT * FROM Courses WHERE code = ?";
@@ -173,7 +173,7 @@ public class CoursesDAO {
 
     public ArrayList<Teachers> getTeacherByName(String name){
         DBUtil util = new DBUtil();
-        ArrayList<Teachers> result = new ArrayList<>();
+        ArrayList<Teachers> result = new ArrayList<Teachers>();
 
         Connection con = util.getCon();
         String sql = "SELECT * FROM Teachers WHERE name = ?";
